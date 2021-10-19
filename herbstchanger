@@ -1,0 +1,16 @@
+#!/bin/bash
+
+file1="/home/jake/.config/herbstluftwm/autostart"
+file2="/home/jake/.config/herbstluftwm/backup/autostart1"
+file3="/home/jake/.config/herbstluftwm/backup/autostart2"
+
+
+if [[ -f "$file2" ]] 
+then
+    mv "$file1" "$file3" && mv "$file2" "$file1";
+else
+    mv "$file1" "$file2" && mv "$file3" "$file1";
+fi
+
+herbstclient reload
+
