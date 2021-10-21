@@ -6,9 +6,18 @@ repo=$1
 file=$2
 commit_message="$2 added"
 
-git add "$file"
-git commit -m "$commit_message"
-git push git@gitlab.com:jped/"$repo".git;
-git push git@github.com:jdpedersen1/"$repo".git
+git status;
+ 
+read -p "Would you like to push changes?" -n 1 -r
+
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    git add "$file"
+    git commit -m "$commit_message"
+    git push git@gitlab.com:jped/"$repo".git;
+    git push git@github.com:jdpedersen1/"$repo".git
+else
+    exit
+fi
 
 
