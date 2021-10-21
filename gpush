@@ -1,8 +1,10 @@
 #!/bin/bash
 
+set -eo pipefail
+
 repo=$1
 file=$2
-commit_message=""$2" added"
+commit_message="$2 added"
 
 git add "$file"
 git commit -m "$commit_message"
