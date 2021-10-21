@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#
 #arrays - for different levels of menu 
 PROGS=("Window Manager" "Terminal Emulator" "Status Bar" "Quit")
 WMS=("awesome" "bspwm" "dwm" "herbst" "i3" "qtile" "ratpoison" "spectrwm" "xmonad" "back" "quit")

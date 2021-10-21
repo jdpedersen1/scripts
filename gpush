@@ -22,7 +22,11 @@ read -p "Would you like to push changes?" -n 1 -r
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    git add "$file"
+    if [[ "$2" = * ]]; then
+        git add .
+    else
+        git add "$file"
+    fi
     git commit -m "$commit_message"
     git push git@gitlab.com:jped/"$repo".git;
     git push git@github.com:jdpedersen1/"$repo".git
