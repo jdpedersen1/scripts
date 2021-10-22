@@ -4,7 +4,7 @@ set -eo pipefail
 
 repo=$1
 file=$2
-commit_message=$3
+commit_message="$2 updated"
 #if [[ "$file" == "*" ]]; then
 #    commit_message="updated repo"
 #else
