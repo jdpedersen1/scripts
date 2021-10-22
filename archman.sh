@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+# this is a comment
 browser="qutebrowser"
 
 echo "what application?"
