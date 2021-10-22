@@ -27,4 +27,7 @@ read -r message
     git commit -m "$message"
     git push git@gitlab.com:jped/"$repo".git;
     git push git@github.com:jdpedersen1/"$repo".git
+    printf "HAVE A NICE DAY!!"
+    sleep 2
+    exit
 
