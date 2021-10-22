@@ -5,10 +5,10 @@ set -eo pipefail
 repo=$1
 file=$2
 
-if [[ "$2" == "*" ]]; then
+if [[ "$file" == "*" ]]; then
     commit_message="updated repo"
 else
-    [[ "$2" != "*" ]]
+    [[ "$file" != "*" ]]
     commit_message="$2 added"
 fi
 
