@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#
 file1="/home/jake/.config/herbstluftwm/autostart"
 file2="/home/jake/.config/herbstluftwm/backup/autostart1"
 file3="/home/jake/.config/herbstluftwm/backup/autostart2"

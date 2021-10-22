@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#
 browser="qutebrowser"
 
 echo "what application?"
