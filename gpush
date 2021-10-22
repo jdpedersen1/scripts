@@ -18,7 +18,7 @@ fi
 
 git status;
  
-read -p "Would you like to push changes?" -n 1 -r
+read -p "Would you like to push changes?\n" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     if [[ "$2" = * ]]; then
         git add .
@@ -26,7 +26,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         git add "$file"
     fi
 
-printf "add message"
+printf "add message\n"
 read -r message
 
     git commit -m "$message"
