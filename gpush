@@ -4,7 +4,6 @@ set -eo pipefail
 
 repo=$1
 file=$2
-commit_message="$2 updated"
 #if [[ "$file" == "*" ]]; then
 #    commit_message="updated repo"
 #else
@@ -28,7 +27,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     fi
 
 
-    git commit -m "$commit_message"
+    git commit -m "$2 updated"
     git push git@gitlab.com:jped/"$repo".git;
     git push git@github.com:jdpedersen1/"$repo".git
 elif [[ $REPLY =~ ^[Nn]$ ]]; then 
