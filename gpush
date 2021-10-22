@@ -4,12 +4,6 @@ set -eo pipefail
 
 repo=$1
 file=$2
-#if [[ "$file" == "*" ]]; then
-#    commit_message="updated repo"
-#else
-#    [[ "$file" != "*" ]]
-#    commit_message="$2 added"
-#fi
 
 if [ -z "$1" ] || [ -z "$2" ]; then
     echo ERROR: Please include repo name followed by filename or \* \(glob\) for entire dir.
@@ -18,7 +12,7 @@ fi
 
 git status;
  
-read -p "Would you like to push changes?""\n" -n 1 -r
+read -p "Would you like to push changes?: " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     if [[ "$2" = * ]]; then
         git add .
