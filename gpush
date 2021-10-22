@@ -5,11 +5,13 @@ set -eo pipefail
 repo=$1
 file=$2
 
-if [[ "$2" = * ]]; then
-    commit_message="updated files"
-else
-    commit_message="$2 added"
-fi
+#if [[ "$2" = * ]]; then
+#    commit_message="updated files"
+#else
+#    commit_message="$2 added"
+#fi
+
+[[ "$2" = * ]] && commit_message="Updated Repo" || commit_message="$2 added"
 
 if [ -z "$1" ] || [ -z "$2" ]; then
     echo ERROR: Please include repo name followed by filename or \* \(glob\) for entire dir.
@@ -29,8 +31,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     git commit -m "$commit_message"
     git push git@gitlab.com:jped/"$repo".git;
     git push git@github.com:jdpedersen1/"$repo".git
-else
+elif [[ $REPLY =~ ^[Nn]$ ]]; then 
+    printf "\nNo changes pushed"
+    sleep 2
     exit
 fi
-
 
