@@ -20,7 +20,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         git add "$file"
     fi
 
-printf "add message\n"
+printf "\nadd message\n"
 read -r message
 
     git commit -m "$message"
