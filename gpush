@@ -13,7 +13,7 @@ git status;
  
 read -p "Would you like to push changes?: " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-    if [[ "$2" = * ]]; then
+    if [[ "$2" = "*" ]]; then
         git add .
     else
         git add "$file"
