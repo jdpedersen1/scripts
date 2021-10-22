@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -eo pipefail
-#
+
 repo=$1
 file=$2
 
