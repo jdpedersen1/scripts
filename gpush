@@ -1,6 +1,6 @@
 #!/bin/bash
 set -eo pipefail
-# this is a comment
+
 repo=$1
 file=$2
 
