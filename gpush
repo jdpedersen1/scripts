@@ -27,7 +27,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     fi
 
 
-    git commit -m "$2 updated"
+    git commit -m "$3"
     git push git@gitlab.com:jped/"$repo".git;
     git push git@github.com:jdpedersen1/"$repo".git
 elif [[ $REPLY =~ ^[Nn]$ ]]; then 
