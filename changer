@@ -9,11 +9,11 @@ PS3='Which theme would you like?'
 select gaps in "${THEMES[@]}"; do
     case "$gaps" in
         "Large")
-            cd "$DIR" || 'exit'; rm autostart; wget https://gitlab.com/jped/dotfiles/-/raw/master/.config/herbstluftwm/backup/autostart1; mv autostart1 "$HOME/.config/herbstluftwm/autostart"; chmod +x autostart; herbstclient reload
+            cd "$DIR" || 'exit'; rm autostart; wget https://gitlab.com/jped/windowmanagers/-/raw/master/.config/herbstluftwm/backup/autostart1; mv autostart1 "$HOME/.config/herbstluftwm/autostart"; chmod +x autostart; herbstclient reload
             exit
             ;;
         "Normal")
-            cd "$DIR" || 'exit'; rm autostart; wget https://gitlab.com/jped/dotfiles/-/raw/master/.config/herbstluftwm/autostart; chmod +x autostart; herbstclient reload
+            cd "$DIR" || 'exit'; rm autostart; wget https://gitlab.com/jped/windowmanagers/-/raw/master/.config/herbstluftwm/autostart; chmod +x autostart; herbstclient reload
             exit
             ;;
         "Quit")

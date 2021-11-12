@@ -1,0 +1,6 @@
+#!/bin/bash
+
+DIR="$HOME/Pictures/mosh"
+LOGO="$(find "$DIR"/*.gif | shuf -n1)"
+cat "$LOGO" > /home/jake/Pictures/logo.gif
+
