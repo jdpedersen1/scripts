@@ -1,16 +1,25 @@
 #!/bin/bash
-#
+
+#this script fits my system and file path/location, change file path to match your personal system
+
+#variables for paths to different config files to cycle through
 file1="/home/jake/.config/herbstluftwm/autostart"
 file2="/home/jake/.config/herbstluftwm/backup/autostart1"
 file3="/home/jake/.config/herbstluftwm/backup/autostart2"
 
 
+#checks to see if file 2 listed above actually exists
 if [[ -f "$file2" ]] 
+
+#if file 2 exists, then it rotates file 1 to file 3 location and file 2 to file 1 location
 then
     mv "$file1" "$file3" && mv "$file2" "$file1";
+
+#if file 2 does not exist, then it moves file 1 to file 2 location and file 3 to file 1 location
 else
     mv "$file1" "$file2" && mv "$file3" "$file1";
 fi
 
+# once files situated, herbsclient reloads and applies changes
 herbstclient reload
 
