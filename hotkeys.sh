@@ -47,6 +47,3 @@ then
 else [[ $session == ? ]]
     printf "session not found"
 fi
-
-
-
