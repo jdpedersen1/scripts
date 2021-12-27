@@ -21,7 +21,7 @@ if [ $online -eq 0 ]; then
 
 #if no internet connection found, launches awman (command line, offline version of arch wiki) and calls application from user input above
 else
-    awman "$application"
+    printf "No Connection"
 fi
 
 
