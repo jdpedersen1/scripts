@@ -6,8 +6,8 @@
 DAY=$(date --date="2 days" | awk '{ print $2 $3 }')
 TO_ADDRESS="yourmain@maildomain.com"
 SUBJECT="Appointment"
-BODY=$(cat "$HOME/.local/projects/todo/$DAY")
-FILE="$HOME/.local/projects/todo/$DAY"
+BODY=$(cat "$HOME/.local/todo/$DAY")
+FILE="$HOME/.local/todo/$DAY"
 time="$(date "+%H:%M:%S")"
 
 if [[ "$time" == "08:00:00" ]] && [[ -f "$FILE" ]]
@@ -15,7 +15,7 @@ then
     echo "$BODY" | neomutt -s "$SUBJECT" "$TO_ADDRESS"
     curl -X POST https://textbelt.com/text --data-urlencode phone='XXXXXXXXX' --data-urlencode message="$BODY" -d key=textbelt
     exit
-elif [[ "$time" != "08:00:00" ]] && [[ "$time" < "0:8:00:02" ]] || [[ ! -f "$FILE" ]]
+elif [[ "$time" != "08:00:00" ]] && [[ "$time" < "0:8:00:02" ]] && [[ ! -f "$FILE" ]]
 then
     exit
 else
@@ -36,6 +36,10 @@ while true; do
         elif command -v apt &> /dev/null
         then
             sudo apt install figlet
+            break
+        elif command -v xbps-install &> /dev/null
+        then
+            sudo xbps-install figlet
             break
         else
             printf "please install figlet"
@@ -84,14 +88,14 @@ then
 # checks for file with selected date, if found, stores new appointment, #
 # if not found, it creates new file                                     #
 ##---------------------------------------------------------------------##
-if [[ -f "$HOME/.local/projects/todo/$date" ]]; then
-    printf '%s %s :\n %s\n\n' "$date" "$time" "$entry" >> "$HOME/.local/projects/todo/$date"
-    vim "$HOME/.local/projects/todo/$date"
+if [[ -f "$HOME/.local/todo/$date" ]]; then
+    printf '%s %s :\n %s\n\n' "$date" "$time" "$entry" >> "$HOME/.local/todo/$date"
+    vim "$HOME/.local/todo/$date"
 else
-    touch "$HOME/.local/projects/todo/$date"
-    figlet -s -f slant "$date" >> "$HOME/.local/projects/todo/$date"
-    printf '%s %s :\n %s\n\n' "$date" "$time" "$entry" >> "$HOME/.local/projects/todo/$date"
-    vim "$HOME/.local/projects/todo/$date"
+    touch "$HOME/.local/todo/$date"
+    figlet -s -f slant "$date" >> "$HOME/.local/todo/$date"
+    printf '%s %s :\n %s\n\n' "$date" "$time" "$entry" >> "$HOME/.local/todo/$date"
+    vim "$HOME/.local/todo/$date"
 fi
 
 
@@ -109,7 +113,7 @@ then
     printf "\n"
     if [[ "$choice" == all ]]
     then
-        vim "$HOME/.local/projects/todo/"
+        vim "$HOME/.local/todo/"
     else
         if [[ "$choice" == date ]]
         then
@@ -117,7 +121,7 @@ then
             printf "(format = Dec12)"
             printf "\n : "
             read -r day
-            vim "$HOME/.local/projects/todo/$day"
+            vim "$HOME/.local/todo/$day"
         fi
     fi
 elif [[ "$answer" == [E/e] ]]
