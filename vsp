@@ -2,15 +2,24 @@
 
 DIR1=$HOME/.local/pkgs/void-packages/
 DIR2=$HOME/.local/pkgs/void-packages/srcpkgs
+CHECK="$(xbps-query -s "$1" | wc -l)"
 
-cd "$DIR1" || exit
-git pull
-
-cd "$DIR2" || exit
-if [[ -d "$1" ]]
+if [ "$CHECK" -eq "1" ]
 then
-    cd "$DIR1" || exit
-    ./xbps-src pkg "$1" && sudo xbps-install --repository hostdir/binpkgs "$1"
+    printf "You are good to go, program already installed!\n"
+    printf "have a wonderful day, gorgeous!"
+    sleep 2
+    exit
 else
-    printf "Not found"
+    cd "$DIR1" || exit
+    git pull
+
+    cd "$DIR2" || exit
+    if [[ -d "$1" ]]
+    then
+        cd "$DIR1" || exit
+        ./xbps-src pkg "$1" && sudo xbps-install --repository hostdir/binpkgs "$1"
+    else
+        printf "Not found"
+    fi
 fi

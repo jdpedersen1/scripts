@@ -6,7 +6,7 @@
 DAY=$(date --date="2 days" | awk '{ print $2 $3 }')
 TO_ADDRESS="yourmain@maildomain.com"
 SUBJECT="Appointment"
-BODY=$(cat "$HOME/.local/todo/$DAY")
+BODY=$(less "$HOME/.local/todo/$DAY")
 FILE="$HOME/.local/todo/$DAY"
 time="$(date "+%H:%M:%S")"
 
