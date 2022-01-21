@@ -3,7 +3,9 @@
 vms=("Add
 Endeavour
 Garuda
+Manjaro
 Mint
+PopOS
 Solus
 Quit")
 
@@ -26,6 +28,10 @@ case "$choice" in
         $notify
         choice="$(virsh start garuda) && $(virt-viewer --domain-name garuda)"
         ;;
+    Manjaro)
+        $notify
+        choice="$(virsh start Manjaro) && $(virt-viewer --domain-name Manjaro)"
+        ;;
     Mint)
         $notify
         choice="$(virsh start Mint) && $(virt-viewer --domain-name Mint)"
@@ -33,6 +39,10 @@ case "$choice" in
     Solus)
         $notify
         choice="$(virsh start Solus) && $(virt-viewer --domain-name Solus)"
+        ;;
+    PopOS)
+        $notify
+        choice="$(virsh start PopOS) && $(virt-viewer --domain-name PopOS)"
         ;;
 esac
 
