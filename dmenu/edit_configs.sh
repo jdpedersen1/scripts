@@ -94,5 +94,5 @@ case "$choice" in
         exit 1
         ;;
 esac
-alacritty -e vim "$choice"
+kitty -e vim "$choice"
 

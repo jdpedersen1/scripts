@@ -4,10 +4,10 @@ SRL="$(echo -e "Shutdown\nReboot\nLogout\nCancel" | dmenu -l 5 -fn Monaco -l 5 -
 
 case $SRL in
     Shutdown) 
-        sudo poweroff
+        sudo /sbin/shutdown -h now
         ;;
     Reboot)
-        Sudo Reboot
+        sudo /sbin/reboot
         ;;
     Logout)
         herbstclient quit
