@@ -22,7 +22,7 @@ case "$choice" in
         ;;
     Endeavour)
         $notify
-        choice="$(virsh start Endeavour) && $(virt-viewer --domain-name Endeavour)"
+        choice="$(virsh -vga std start Endeavour) && $(virt-viewer --domain-name Endeavour)"
         ;;
     Garuda)
         $notify
