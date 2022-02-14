@@ -53,7 +53,7 @@ pkg_count() {
 
         case $pkg_mgr in
             xbps-install)
-                readarray lines <(xbps-query -l)
+                readarray lines < <(xbps-query -l)
                 printf '%d' ${#lines[*]} ;;
             apt)
                 while read abbrev _; do
@@ -61,7 +61,7 @@ pkg_count() {
                 done <<< "$(dpkg -l)"
                 printf '%d' $line_count ;;
             pacman)
-                readarray lines <(pacman -Q)
+                readarray lines < <(pacman -Q)
                 printf '%d' ${#lines[*]} ;;
         esac
         return
@@ -78,7 +78,7 @@ list_updates() {
         #TODO: Unfinished. May need to add code for each package manager.
         case $pkg_mgr in
             xbps-install)
-                readarray lines <(xbps-install -nuM)
+                readarray lines < <(xbps-install -nuM)
                 printf '%d' ${#lines[*]} ;;
             apt)
                 printf '?' ;;
