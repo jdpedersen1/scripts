@@ -5,15 +5,15 @@
 ##############################
 
 vol() {
-	vol="$(amixer -D pulse get Master | awk -F'[][]' 'END{ print $4":"$2 }')"
-	echo -e " $vol"
+    vol=$(amixer -D pulse get Master | awk -F'[][]' 'END{ print $4":"$2 }')
+    echo -e " $vol"
 }
 ##############################
 #	    UPGRADES
 ##############################
 
 upgrades() {
-	cupd=$(checkupdates | wc -l)
+    cupd=$(checkupdates | wc -l)
     printf "$cupd \n"
 }
 ##############################
@@ -21,49 +21,65 @@ upgrades() {
 ##############################
 
 kernel() {
-    kernel="$(uname -r)"
+    kernel=$(uname -r)
     echo " $kernel"
 }
 
 ## BATTERY
 bat() {
-batstat="$(cat /sys/class/power_supply/BAT0/status)"
-battery="$(cat /sys/class/power_supply/BAT0/capacity)"
-    if [ $batstat = 'Charging' ]; then
-    batstat="^"
-    elif [ $batstat = 'Discharging' ]; then
-    batstat="v"
-    elif [[ $battery -ge 5 ]] && [[ $battery -le 19 ]]; then
-    batstat=""
-    elif [[ $battery -ge 20 ]] && [[ $battery -le 39 ]]; then
-    batstat=""
-    elif [[ $battery -ge 40 ]] && [[ $battery -le 59 ]]; then
-    batstat=""
-    elif [[ $battery -ge 60 ]] && [[ $battery -le 79 ]]; then
-    batstat=""
-    elif [[ $battery -ge 80 ]] && [[ $battery -le 95 ]]; then
-    batstat=""
-    elif [[ $battery -ge 96 ]] && [[ $battery -le 100 ]]; then
-    batstat=""
-fi
+    read batstat < /sys/class/power_supply/BAT0/status
+    read battery < /sys/class/power_supply/BAT0/capacity
 
-echo "$batstat  $battery %"
+    case $batstat in
+        Charging)
+            #batstat='↑' ;;
+            batstat='^' ;;
+        Discharging)
+            #batstat='↓' ;;
+            batstat='v' ;;
+
+            # Use this to set character per battery level. Unicode would be
+            # good, if you're able to use it -- like the following for:
+            #
+            #   75 - 100 = ꜒
+            #   75 - 50  = ꜓
+            #   50 - 25  = ꜔
+            #   25 - 10  = ꜕
+            #   10 - 0   = ꜖
+            #
+            #if (( battery < 5 )); then
+            #    batstat=''
+            #elif (( battery >= 5 && battery <= 19 )); then
+            #    batstat=''
+            #elif (( battery >= 20 && battery <= 39 )); then
+            #    batstat=''
+            #elif (( battery >= 40 && battery <= 59 )); then
+            #    batstat=''
+            #elif (( battery >= 60 && battery <= 79 )); then
+            #    batstat=''
+            #elif (( battery >= 80 && battery <= 95 )); then
+            #    batstat=''
+            #elif (( battery >= 96 && battery <= 100 )); then
+            #    batstat=''
+            #fi ;;
+    esac
+
+    printf '%s  %d %%' "$batstat"  $battery
 }
 
 network() {
-wifi="$(ip a | grep wlo1 | grep inet | wc -l)"
+    wifi=$(ip a | grep wlo1 | grep inet | wc -l)
 
-if [ $wifi = 1 ]; then
-    echo "ok"
-else 
-    echo "ng"
-fi
+    if (( wifi == 1 )); then
+        echo "ok"
+    else
+        echo "ng"
+    fi
 }
 
-      SLEEP_SEC=2
-      #loops forever outputting a line every SLEEP_SEC secs
-      while :; do     
+#loops forever outputting a line every SLEEP_SEC secs
+SLEEP_SEC=2
+while :; do
     echo "|  ^i(/home/jake/.xmonad/xpm/xmonad_xpm_pac_20.xpm) = $(upgrades)  | kernel = $(kernel)  | vol = $(vol)  | Batt = $(bat)  | wifi = $(network)  |"
-		sleep $SLEEP_SEC
-    done
-	
+    sleep $SLEEP_SEC
+done
