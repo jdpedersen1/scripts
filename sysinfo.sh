@@ -70,24 +70,34 @@ pkg_count() {
 }
 
 ### CHECKS FOR NUMBER OF UPDATES, ONLY SET UP TO RUN ON VOID
-### EDIT LINES FOR APT OR PACMAN OR ADD YOUR OWN LINES FOR OTHER MANAGERS
+### EDIT LINES FOR PACMAN OR ADD YOUR OWN LINES FOR OTHER MANAGERS
 list_updates() {
     for pkg_mgr in xbps-install apt pacman; do
         type -P "$pkg_mgr" &> /dev/null || continue
 
-        #TODO: Unfinished. May need to add code for each package manager.
         case $pkg_mgr in
             xbps-install)
                 readarray lines < <(xbps-install -nuM)
                 printf '%d' ${#lines[*]} ;;
             apt)
-                printf '?' ;;
+                key='APT::Get::Show-User-Simulation-Note'
+                while read; do
+                    if [[ $REPLY =~ ^[[:digit:]]+\ to\ upgrade, ]]; then
+                        for field in $REPLY; {
+                            [[ $field =~ ^[[:digit:]]+$ ]] &&
+                                (( count += field ))
+                        }
+
+                        break
+                    fi
+                done <<< "$(apt-get -so $key=false dist-upgrade)"
+                printf '%d' $count ;;
             pacman)
                 printf '?' ;;
+            *)
+                printf '?' ;;
         esac
-        return
     done
-    printf 'Not Found'
 }
 
 ### CHECKS WHICH VERSION OF ZSH IS RUNNING, CHANGE FOR BASH OR OTHER SHELLS
