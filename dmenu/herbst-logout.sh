@@ -11,6 +11,7 @@ case $SRL in
         ;;
     Logout)
         herbstclient quit
+        bspc quit
         ;;
     *)
         ;;

@@ -40,7 +40,7 @@ case "$choice" in
         choice="$HOME/.config/dunst/dunstrc"
         ;;
     dwm)
-        choice="$HOME/dwm-6.2/config.h"
+        choice="$HOME/.config/suckless/dwm-6.2/config.h"
         ;;
     herbstluftwm)
         choice="$HOME/.config/herbstluftwm/autostart"
@@ -67,16 +67,16 @@ case "$choice" in
         choice="$HOME/.spectrwm.conf"
         ;;
     st)
-        choice="$HOME/st-0.8.4/config.h"
+        choice="$HOME/.config/suckless/st-0.8.4/config.h"
         ;;
     sxhkd)
         choice="$HOME/.config/sxhkd/sxhkdrc"
         ;;
     vim)
-        choice="$HOME/.vimrc"
+        choice="$HOME/.config/vim/.vimrc"
         ;;
     website)
-        choice="$HOME/website/HTML/"
+        choice="$HOME/.local/website/jpedmedia/index.html"
         ;;
     xmobar)
         choice="$HOME/.config/xmobar/xmobarrc"
@@ -88,7 +88,7 @@ case "$choice" in
         choice="$HOME/.Xresources"
         ;;
     zsh)
-        choice="$HOME/.zshrc"
+        choice="$HOME/.config/zsh/.zshrc"
         ;;
     *)
         exit 1
