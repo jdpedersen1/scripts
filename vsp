@@ -18,7 +18,7 @@ else
     if [[ -d "$1" ]]
     then
         cd "$DIR1" || exit
-        ./xbps-src pkg "$1" && sudo xbps-install --repository hostdir/binpkgs "$1"
+        ./xbps-src pkg "$1" && sudo xbps-install -y --repository hostdir/binpkgs "$1"
     else
         printf "Not found"
     fi

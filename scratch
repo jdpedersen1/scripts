@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+
+case "$1" in
+
+	scratchpad) 		
+        entry="kitty -T scratchpad" 		
+        ;;
+	FM) 		
+        entry="kitty -T FM -e ranger"		
+        ;;
+    Mail)
+        entry="kitty -T Mail -e neomutt"
+esac
+
+xdotool search --onlyvisible --name "$1" windowunmap \
+    || xdotool search --name "$1" windowmap \
+    || $entry &
+

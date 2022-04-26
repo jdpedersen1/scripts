@@ -16,7 +16,7 @@ distro() {
     file='/etc/os-release'
     if [[ -f $file && -r $file ]]; then
         while IFS='=' read key value; do
-            if [[ $key == PRETTY_NAME ]]; then
+            if [[ $key == NAME ]]; then
                 printf '%s\n' "${value//\"/}"
 
                 break
@@ -53,8 +53,7 @@ pkg_count() {
 
         case $pkg_mgr in
             xbps-install)
-                readarray lines <(xbps-query -l)
-                printf '%d' ${#lines[*]} ;;
+                xbps-query -l | wc -l ;;
             apt)
                 while read abbrev _; do
                     [[ $abbrev == ii ]] && (( line_count++ ))

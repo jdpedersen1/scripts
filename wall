@@ -1,6 +1,6 @@
 #! /bin/bash
 
-DIR="/home/jake/Pictures/wallpaper"
+DIR="/home/jake/Media/Pictures/wallpaper"
 WALL="$(sxiv file $DIR)"
 
 

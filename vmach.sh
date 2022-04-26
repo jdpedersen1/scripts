@@ -1,6 +1,7 @@
 #!/bin/bash
 
 vms=("Add
+Arch
 Endeavour
 Garuda
 Manjaro
@@ -9,7 +10,7 @@ PopOS
 Solus
 Quit")
 
-choice=$(echo -e "${vms[@]}" | dmenu -fn 'Monaco' -p 'Virt Machines: ' -nb '#000000' -nf '#10713c' -sb '#10713c' -sf '#000000')
+choice=$(echo -e "${vms[@]}" | dmenu -fn 'Hermit:size=10' -p 'Virt Machines: ' -nb '#222222' -nf '#b8b8b8' -sb '#007687' -sf '#000000')
 notify="$(notify-send "v-machine launcher" "launching $choice")"
 
 
@@ -19,6 +20,10 @@ case "$choice" in
         ;;
     Quit)
         notify-send "v-machine launcher" "no system selected" && exit 1
+        ;;
+    Arch)
+        $notify
+        choice="$(virsh start Arch) && $(virt-viewer --domain-name Arch)"
         ;;
     Endeavour)
         $notify

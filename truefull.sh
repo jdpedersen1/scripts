@@ -1,2 +1,0 @@
-berryc fullscreen
-berryc window_center

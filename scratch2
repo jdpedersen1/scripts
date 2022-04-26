@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+#SCRATCHPAD_NAME=$1
+
+case "$1" in
+
+    qutebrowser)
+        entry="qutebrowser"
+        ;;
+esac
+
+xdotool search --onlyvisible --classname "$1" windowunmap \
+    || xdotool search --classname "$1" windowmap \
+    || $entry &
+

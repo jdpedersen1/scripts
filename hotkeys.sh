@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #variable for current session environment
-session="$XDG_SESSION_DESKTOP"
+session="$(echo $DESKTOP_SESSION | cut -d '/' -f 5)"
 
 #variables for determining which file to pull based on session identified
 file1="$HOME/.xmonad/xmonad.hs"
