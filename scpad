@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Created By: Jake@Linux
+# Created On: Sat 03 Sep 2022 03:56:04 PM CDT
+# Project: bspwm scratchpad
+
+winclass="$(xdotool search --class scpad)";
+if [ -z "$winclass" ]; then
+    kitty --class scpad
+else
+    if [ ! -f /tmp/scpad ]; then
+        touch /tmp/scpad && xdo hide "$winclass"
+    elif [ -f /tmp/scpad ]; then
+        rm /tmp/scpad && xdo show "$winclass"
+    fi
+fi
+
+
