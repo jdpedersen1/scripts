@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 options=("alacritty
 bash
@@ -32,10 +32,10 @@ case "$choice" in
         echo "Program terminated." && exit 1
         ;;
     alacritty)
-        choice="$HOME/.config/alacritty.yml"
+        choice="$HOME/.config/alacritty/alacritty.yml"
         ;;
     bash)
-        choice="$HOME/.bashrc"
+        choice="$HOME/.config/bash/.bashrc"
         ;;
     dunst)
         choice="$HOME/.config/dunst/dunstrc"
@@ -95,5 +95,5 @@ case "$choice" in
         exit 1
         ;;
 esac
-devour kitty -e vim "$choice"
+devour alacritty -e vim -u ~/.config/vim/.vimrc "$choice"
 

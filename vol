@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ $(pamixer --get-mute) = true ] && echo  && exit
+[ "$(pamixer --get-mute)" == true ] && echo  && exit
 
 vol="$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
 echo "${vol}% "

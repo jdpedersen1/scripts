@@ -7,6 +7,7 @@ session="$(echo $DESKTOP_SESSION | cut -d '/' -f 5)"
 file1="$HOME/.xmonad/xmonad.hs"
 file2="$HOME/.ratpoisonrc"
 file3="$HOME/.config/i3/config"
+file4="$HOME/.config/herbstluftwm/autostart"
 program=$1
 
 #requires figlet, this checks if figlet is installed and if not, it installs on arch or debian
@@ -44,6 +45,9 @@ then
 elif [[ $session == i3 ]]
 then
     grep "bindsym" "$file3" | cut -f2-7 -d " " | column -t -s' ' | grep "$program"
+elif [[ $session == herbstluftwm ]]
+then 
+    grep "Mod-" "$file4" | cut -f3-9 -d " " | grep "$program"
 else [[ $session == ? ]]
     printf "session not found"
 fi

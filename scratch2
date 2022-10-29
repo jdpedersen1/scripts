@@ -1,15 +1,26 @@
 #!/usr/bin/env bash
 
-#SCRATCHPAD_NAME=$1
+SCRATCHPAD_NAME=$1
 
 case "$1" in
 
     qutebrowser)
         entry="qutebrowser"
         ;;
+    Alacritty)
+        entry="alacritty -e wingeo"
+        ;;
+    Calc)
+        entry="qalculate-gtk"
+        ;;
+    Mail)
+        entry="mailspring"
+        ;;
+    Menu)
+        entry="kitty --class launch -e launch.sh"
 esac
 
-xdotool search --onlyvisible --classname "$1" windowunmap \
+xdotool search --onlyvisible --class "$1" windowunmap \
     || xdotool search --classname "$1" windowmap \
     || $entry &
 

@@ -2,7 +2,7 @@
 #
 #arrays - for different levels of menu 
 PROGS=("Window Manager" "Terminal Emulator" "Status Bar" "Quit")
-WMS=("awesome" "bspwm" "dwm" "herbst" "i3" "qtile" "ratpoison" "spectrwm" "xmonad" "back" "quit")
+WMS=("awesome" "bspwm" "dwm" "herbst" "i3" "spectrwm" "xmonad" "back" "quit")
 TERMS=("alacritty" "kitty" "st" "urxvt" "xterm" "back" "quit")
 BARS=("baraction" "dzen" "polybar" "xmobar" "back" "quit")
 
@@ -22,39 +22,31 @@ select prog in "${PROGS[@]}"; do
             select file in "${WMS[@]}"; do
                 case "$file" in
                     "awesome")
-                        nvim "$HOME/.config/awesome/rc.lua"
+                        vim "$HOME/.config/awesome/rc.lua"
                         
                         ;;
                     "bspwm")
-                        nvim "$HOME/.config/bspwm/bspwmrc"
+                        vim "$HOME/.config/bspwm/bspwmrc"
                         
                         ;;
                     "dwm")
-                        nvim "$HOME/dwm-6.2/config.h"
+                        vim "$HOME/dwm-6.2/config.h"
                         
                         ;;
                     "herbst")
-                        nvim "$HOME/.config/herbstluftwm/autostart"
+                        vim "$HOME/.config/herbstluftwm/autostart"
                         
                         ;;
                     "i3")
-                        nvim "$HOME/.config/i3/config"
-                        
-                        ;;
-                    "qtile")
-                        nvim "$HOME/.config/qtile/config.py"
-                        
-                        ;;
-                    "ratpoison")
-                        nvim "$HOME/.ratpoisonrc"
+                        vim "$HOME/.config/i3/config"
                         
                         ;;
                     "spectrwm")
-                        nvim "$HOME/.spectrwm.conf"
+                        vim "$HOME/.spectrwm.conf"
                         
                         ;;
                     "xmonad")
-                        nvim "$HOME/.xmonad/xmonad.hs"
+                        vim "$HOME/.xmonad/xmonad.hs"
                         
                         ;;
                     "back")
@@ -80,23 +72,23 @@ select prog in "${PROGS[@]}"; do
             select config in "${TERMS[@]}"; do
                 case "$config" in
                     "alacritty")
-                        nvim "$HOME/.config/alacritty.yml"
+                        vim "$HOME/.config/alacritty.yml"
                         
                         ;;
                     "kitty")
-                        nvim "$HOME/.config/kitty/kitty.conf" 
+                        vim "$HOME/.config/kitty/kitty.conf" 
                         
                         ;;
                     "st")
-                        nvim "$HOME/st-0.8.4/config.h"
+                        vim "$HOME/st-0.8.4/config.h"
                         
                         ;;
                     "urxvt")
-                        nvim "$HOME/.Xresources"
+                        vim "$HOME/.Xresources"
                         
                         ;;
                     "xterm")
-                        nvim "$HOME/.Xresources"
+                        vim "$HOME/.Xresources"
                         
                         ;;
                     "back")
@@ -105,7 +97,7 @@ select prog in "${PROGS[@]}"; do
                         ;;
                     "quit")
                         echo "Deuces!!"
-                         
+                        exit
                         ;;
                     *) echo "someone needs to go back to school, there is no $REPLY";;
                 esac
@@ -116,19 +108,19 @@ select prog in "${PROGS[@]}"; do
             select bar in "${BARS[@]}"; do
                 case "$bar" in
                     "baraction")
-                        nvim "$HOME/baraction.sh"
+                        vim "$HOME/baraction.sh"
                         
                         ;;
                     "dzen")
-                        nvim "$HOME/.Xresources"
+                        vim "$HOME/.Xresources"
                         
                         ;;
                     "polybar")
-                        nvim "$HOME/.config/polybar/config"
+                        vim "$HOME/.config/polybar/config"
                         
                         ;;
                     "xmobar")
-                        nvim "$HOME/.config/xmobar/xmobarrc"
+                        vim "$HOME/.config/xmobar/xmobarrc"
                         ;;
                     "back")
                         PS3="What type of file: 1) WM, 2) Termnal, 3) Bar, 4) Quit: "

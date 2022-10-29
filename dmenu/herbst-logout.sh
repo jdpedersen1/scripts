@@ -14,7 +14,8 @@ case $SRL in
         herbstclient quit ||
         bspc quit ||
         i3 exit ||
-        berryc quit
+        berryc quit ||
+        sudo sv restart sddm
         ;;
     *)
         ;;

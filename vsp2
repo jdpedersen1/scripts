@@ -23,7 +23,7 @@ then
         then
             cd "$DIR1" || exit
             notify-send -t 60000 "installing $pkg, Please be patient" 
-            ./xbps-src pkg "$pkg" && sudo xbps-install -Sy --repository hostdir/binpkgs "$pkg"
+            ./xbps-src pkg "$pkg" && sudo xbps-install -Sy --repository hostdir/binpkgs "$pkg" 
         else
             notify-send "Not found"
             exit

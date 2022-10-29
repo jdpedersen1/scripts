@@ -1,16 +1,24 @@
 #!/usr/bin/env bash
 
-
 case "$1" in
 
 	scratchpad) 		
-        entry="kitty -T scratchpad" 		
+        entry="alacritty -t scratchpad" 		
         ;;
 	FM) 		
-        entry="kitty -T FM -e ranger"		
+        entry="alacritty -t FM -e ranger"		
         ;;
     Mail)
-        entry="kitty -T Mail -e neomutt"
+        entry="alacritty -t Mail -e neomutt"
+        ;;
+    Music)
+        entry="alacritty -t Music -e ncmpcpp"
+        ;;
+    Calc)
+        entry="qalculate-gtk"
+        ;;
+    Menu)
+        entry="alacritty -t launch -e launch.sh"
 esac
 
 xdotool search --onlyvisible --name "$1" windowunmap \

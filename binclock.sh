@@ -37,4 +37,4 @@ done
 # change symbols and colors
 output=$(sed s/'0 '/$(printf "$offSymbol")' '/g <<< $output)
 output=$(sed s/'1 '/$(printf "$onSymbol")' '/g <<< $output)
-echo -e $output # print
+echo -e $output && echo $(date +%R) # print
