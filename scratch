@@ -6,7 +6,7 @@ case "$1" in
         entry="alacritty -t scratchpad" 		
         ;;
 	FM) 		
-        entry="alacritty -t FM -e ranger"		
+        entry="alacritty -t FM -e bettercd.sh"		
         ;;
     Mail)
         entry="alacritty -t Mail -e neomutt"
@@ -14,10 +14,10 @@ case "$1" in
     Music)
         entry="alacritty -t Music -e ncmpcpp"
         ;;
-    Calc)
-        entry="qalculate-gtk"
+    Todo)
+        entry="alacritty -t Todo -e schedule.sh"
         ;;
-    Menu)
+    launch)
         entry="alacritty -t launch -e launch.sh"
 esac
 

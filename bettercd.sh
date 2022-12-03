@@ -5,7 +5,6 @@
 # Project: file manager
 
 
-
 bettercd() {
     >/dev/null cd $1
     if [ -z $1 ]
