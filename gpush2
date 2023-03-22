@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#
+## Created By: Jake@Linux
+# Created On: Tue 24 Jan 2023 08:46:36 AM CST
+# # Project: Git maintenance script
+#
+#!/bin/bash
+
+while getopts 's:p' OPTION; do
+  case "$OPTION" in
+    s)
+        svalue="$OPTARG"
+        git -c color.status=always diff -p "$OPTARG"
+        ;;
+    p)
+        git -c color.status=always status
+        ;;
+    ?)
+      echo "script usage: $(basename \$0) [-l] [-h] [-a somevalue]" >&2
+      exit 1
+      ;;
+  esac
+done
+shift "$(($OPTIND -1))"
+
+read -rep $'Would you like to commit changes?\n: ' commit
+if [[ $commit == y ]]; then
+    echo "committed"
+fi
+
+

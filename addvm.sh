@@ -1,23 +1,19 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
+## Created By: Jake@Linux
+# Created On: Tue 31 Jan 2023 09:35:22 AM CST
+# # Project: virtual machine creation script, used with vmach.sh script or as stand alone installer
 
-printf "What distro?\n"
-printf " : "
-read -r distro "$'\n'"
-printf "How many CPUs?\n"
-printf " : "
-read -r cpu "$'\n'"
-printf "How much mem?\n"
-printf " : "
-read -r mem "$'\n'"
-printf "Location of iso?\n"
-read -r location "$'\n'"
-printf "Disk size?\n"
-read -r gb "$'\n'"
-printf "What type of OS?\n"
-read -r os $"'\n'"
+read -rep $'What distro?\n: ' distro
+read -rep $'How many CPUs?\n: ' cpu
+read -rep $'How much Mem?\n: ' mem
+read -rep $'Name of iso?\n: ' iso
+read -rep $'Disk size?\n: ' gb
+read -rep $'Type of OS?\n: ' os
+read -rep $'Bios or UEFI?\n: ' boot
 
-virt-install --name="$distro" --vcpus="$cpu" --memory="$mem" --cdrom="$location" --disk size="$gb" --os-variant="$os"
-read -rp "Press Enter to continue" </dev/tty
-
+nohup virt-install --name="$distro" --vcpus="$cpu" --memory="$mem" --cdrom="/home/jake/Desktop/iso/$iso" --disk size="$gb" --os-variant="$os" --boot "$boot" &
+read -r -p "Press Enter to continue" </dev/tty
+exit
 
 

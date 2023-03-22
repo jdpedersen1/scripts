@@ -1,25 +1,34 @@
 #!/bin/bash
 
-DIR1=$HOME/.local/pkgs/void-packages/
-DIR2=$HOME/.local/pkgs/void-packages/srcpkgs
-CHECK="$(xbps-query -s "$1" | wc -l)"
+ARGS=$(getopt --options cvh --long "check,version,help" -- "$@")
 
-if [ "$CHECK" -eq "1" ]
-then
-    printf "You are good to go, program already installed!\n"
-    printf "have a wonderful day, gorgeous!"
-    sleep 2
-    exit
-else
-    cd "$DIR1" || exit
-    git pull
+eval set --"$ARGS"
 
-    cd "$DIR2" || exit
-    if [[ -d "$1" ]]
-    then
-        cd "$DIR1" || exit
-        ./xbps-src pkg "$1" && sudo xbps-install -y --repository hostdir/binpkgs "$1"
+check="false"
+version="false"
+help="false"
+
+while true; do 
+    case "$1" in
+        -c|--check)
+            check="true"
+            shift;;
+        -v|--version)
+            version="true"
+            shift;;
+        -h|--help)
+            help="true"
+            shift;;
+    esac
+done
+
+if [ "$check" == true ]; then
+    search=$(xbps-query -s "$2" | wc -l)
+    if [ "$search" -ge "1" ]; then
+        ver=$(grep version ~/.local/pkgs/void-packages/srcpkgs/"$2"/template)
+        echo "$ver"
     else
-        printf "Not found"
+        echo "done"
     fi
 fi
+

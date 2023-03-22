@@ -7,7 +7,7 @@ DIR2=$HOME/.local/pkgs/void-packages/srcpkgs
 CHECK="$(xbps-query -s "$pkg" | wc -l)"
 
 
-if [ $pkg ]
+if [ "$pkg" ]
 then
     if [ "$CHECK" -eq "1" ]
     then

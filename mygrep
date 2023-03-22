@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Created By: Jake@Linux
+# Created On: Tue 27 Dec 2022 01:57:09 PM CST
+# Project: 
+
+while read -r; do
+    line="$REPLY"
+    ( echo "$line" | grep --color "$@" ) || echo "$line"
+    done
+

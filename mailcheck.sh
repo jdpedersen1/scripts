@@ -11,14 +11,14 @@ sleep 5;
 
 mbsync -a;
 
-if [[ $mailch > 0 ]] || [[ $mailch2 > 0 ]]; then
-    printf " $mailch:$mailch2"
+if [[ $mailch -gt 0 ]] || [[ $mailch2 -gt 0 ]]; then
+    printf "  $mailch:$mailch2"
 else
-    printf " 0"
+    printf "  0"
 fi
 else
     mailch="$(ls $HOME/.local/share/mail/jake\@jpedmedia.com/INBOX/new | wc -l)"
     mailch2="$(ls $HOME/.local/share/mail/jdpedersen1\@yahoo.com/INBOX/new | wc -l)"
-    printf " $mailch:$mailch2"
+    printf "  $mailch:$mailch2"
 fi
 

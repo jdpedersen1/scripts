@@ -4,7 +4,7 @@
 # assign variables #
 ##----------------##
 DAY=$(date --date="2 days" | awk '{ print $2 $3 }')
-TO_ADDRESS="yourmain@maildomain.com"
+TO_ADDRESS="yourmail@maildomain.com"
 SUBJECT="Appointment"
 BODY=$(less "$HOME/.local/todo/$DAY")
 FILE="$HOME/.local/todo/$DAY"
@@ -113,7 +113,7 @@ then
     printf "\n"
     if [[ "$choice" == all ]]
     then
-        vim "$HOME/.local/todo/"
+        ls "$HOME/.local/todo/"
     else
         if [[ "$choice" == date ]]
         then

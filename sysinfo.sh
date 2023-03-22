@@ -101,8 +101,11 @@ shell() {
 }
 
 {
-    printf ' [ LSB: %s ] ' "$(distro)"
+    printf '[ LSB: %s ] ' "$(distro)"
+    printf "\n"
     printf '[ Init: %s ] ' "$(find_init)"
+    printf "\n"
     printf '[ Shell: %s ] ' "$(shell)"
+    printf "\n"
     printf '[ PKGs: %s ]' "$(pkg_count)"
 } > .local/share/sysinfo.txt

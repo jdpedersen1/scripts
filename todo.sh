@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ##----------------##
 # assign variables #
 ##----------------##
@@ -71,13 +70,9 @@ while true; do
 if [[ "$answer" == [A/a] ]]
 then
     printf "\n"
-    printf "Date\n(format = Dec12)"
+    printf "Input Topic of Entry"
     printf "\n : "
-    read -r date
-    printf "\n"
-    printf "Time\n(format = HH:MM AM/PM) "
-    printf "\n : "
-    read -r time
+    read -r topic
     printf "\n"
     printf "Entry\n "
     printf "\n : "
@@ -88,14 +83,14 @@ then
 # checks for file with selected date, if found, stores new appointment, #
 # if not found, it creates new file                                     #
 ##---------------------------------------------------------------------##
-if [[ -f "$HOME/.local/todo/$date" ]]; then
-    printf '%s %s :\n %s\n\n' "$date" "$time" "$entry" >> "$HOME/.local/todo/$date"
-    vim "$HOME/.local/todo/$date"
+if [[ -f "$HOME/.local/todo/$topic" ]]; then
+    printf '[ ] %s\n' "$entry" >> "$HOME/.local/todo/$topic"
+    vim "$HOME/.local/todo/$topic"
 else
-    touch "$HOME/.local/todo/$date"
-    figlet -s -f slant "$date" >> "$HOME/.local/todo/$date"
-    printf '%s %s :\n %s\n\n' "$date" "$time" "$entry" >> "$HOME/.local/todo/$date"
-    vim "$HOME/.local/todo/$date"
+    touch "$HOME/.local/todo/$topic"
+    figlet -s -f slant "$topic" >> "$HOME/.local/todo/$topic"
+    printf '\n %s\n' "$entry" >> "$HOME/.local/todo/$topic"
+    vim "$HOME/.local/todo/$topic"
 fi
 
 
