@@ -2,5 +2,5 @@
 
 [ "$(pamixer --get-mute)" == true ] && echo  && exit
 
-vol="$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
+vol="$(pamixer --get-volume | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
 echo "${vol}% "

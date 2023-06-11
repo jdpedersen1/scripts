@@ -3,13 +3,13 @@
 case "$1" in
 
 	scratchpad) 		
-        entry="alacritty -t scratchpad" 		
+        entry="alacritty --class scpad -t scratchpad" 		
         ;;
-	FM) 		
-        entry="alacritty -t FM -e bettercd.sh"		
+	Menu) 		
+        entry="alacritty --class launch -t menu -e launch.sh"		
         ;;
-    Mail)
-        entry="alacritty -t Mail -e neomutt"
+    vsrc)
+        entry="alacritty --class src -t vsrc -e vsp2"
         ;;
     Music)
         entry="alacritty -t Music -e ncmpcpp"
@@ -17,8 +17,6 @@ case "$1" in
     Todo)
         entry="alacritty -t Todo -e schedule.sh"
         ;;
-    launch)
-        entry="alacritty -t launch -e launch.sh"
 esac
 
 xdotool search --onlyvisible --name "$1" windowunmap \

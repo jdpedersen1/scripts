@@ -21,7 +21,7 @@ case "$choice" in
     *)
         notify="$(notify-send "v-machine launcher" "launching $choice")"
         $notify
-        choice="$(virsh start "$choice") && $(devour virt-viewer --domain-name "$choice")"
+        choice="$(virsh -q start "$choice") && $(devour virt-viewer --domain-name "$choice")"
         ;;
 esac
 

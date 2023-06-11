@@ -3,7 +3,7 @@
 #must have awman installed also change browser variable to whichever browser you currently use
 
 #variable for web browser
-browser="qutebrowser"
+browser="firefox"
 
 #prompt user for input as to what application they want information about
 echo "what application?"

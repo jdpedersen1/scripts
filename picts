@@ -1,7 +1,0 @@
-#! /bin/bash
-
-
-DIR="/home/jake/Media/Pictures"
-PICTS="$(sxiv file $DIR)"
-
-
