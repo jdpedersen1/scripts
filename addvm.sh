@@ -12,8 +12,11 @@ read -rep $'Disk size?\n: ' gb
 read -rep $'Type of OS?\n: ' os
 read -rep $'Bios or UEFI?\n: ' boot
 
-nohup virt-install --name="$distro" --vcpus="$cpu" --memory="$mem" --cdrom="/home/jake/Desktop/iso/$iso" --disk size="$gb" --os-variant="$os" --boot "$boot" &
+
+
+
 read -r -p "Press Enter to continue" </dev/tty
-exit
+
+virt-install --name="$distro" --vcpus="$cpu" --memory="$mem" --cdrom="/home/jake/Desktop/iso/$iso" --disk size="$gb" --os-variant="$os" --boot "$boot" &
 
 

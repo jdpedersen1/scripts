@@ -19,8 +19,7 @@ time="$(date "+%H:%M:%S")"
 #then
 #    exit
 #else
-
-##-------------------------------------------------------------------------------------##
+#
 # checks for figlet on system and installs on arch or debian based systems if not found #
 # prints out header for program                                                         #
 ##-------------------------------------------------------------------------------------##
