@@ -8,6 +8,8 @@ check="false"
 version="false"
 help="false"
 
+
+
 while true; do 
     case "$1" in
         -c|--check)
@@ -19,16 +21,25 @@ while true; do
         -h|--help)
             help="true"
             shift;;
+        --)
+            shift
+            break;;
     esac
 done
 
+search="$(ls "$HOME"/.local/pkgs/void-packages/srcpkgs | grep "$1")"
+
+
 if [ "$check" == true ]; then
-    search=$(xbps-query -s "$2" | wc -l)
-    if [ "$search" -ge "1" ]; then
-        ver=$(grep version ~/.local/pkgs/void-packages/srcpkgs/"$2"/template)
-        echo "$ver"
-    else
-        echo "done"
+    avail="$(ls "$HOME"/.local/pkgs/void-packages/srcpkgs | grep "$1" | wc -l)"
+    if [ "$avail" -gt 0 ]; then
+        echo "$search"
     fi
+fi
+
+
+if [ "$version" == true ]; then
+    ver=$(grep version= ~/.local/pkgs/void-packages/srcpkgs/"$1"/template)
+    echo "$ver"
 fi
 

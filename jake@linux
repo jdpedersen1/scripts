@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+# Created By: Jake@Linux
+# Created On: Sat 23 Sep 2023 11:20:15 AM CDT
+# Project: 
+
+from tqdm import tqdm
+import time
+import os
+from pyfiglet import Figlet
+f=Figlet(font='slant')
+banner = f.renderText("Merry\nChristmas!")
+
+print("Traveling.........")
+time.sleep(1.0)
+for i in tqdm (range (100),
+			desc="Seeking room.....",
+			ncols=100):
+	time.sleep(0.01)
+print()
+print("No room found......")
+time.sleep(.5)
+print()
+for i in tqdm (range (100),
+			desc="stable located.....",
+			ncols=100):
+	time.sleep(0.01)
+print()
+print("Manger prepped......")
+time.sleep(.5)
+print()
+for i in tqdm (range (100),
+			desc="Star shining.......",
+			ncols=100):
+	time.sleep(0.01)
+print()
+print("Wise men and shepherds seeking.....")
+time.sleep(.5)
+#os.system('clear')
+time.sleep(.5)
+print("On this day in Bethlehem, a child is born...")
+print()
+print(banner)
+print()
+print("Glory to the newborn King!")
+print("Luke 2:1-20")

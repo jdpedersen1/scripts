@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-#pkg="$(ls ~/.local/pkgs/void-packages/srcpkgs | dmenu -i -fn Hermit:size=10 -nb '#222222' -sb '#007687' -sf '#222222' -nf '#b8b8b8' -l 10 -g 7 -p "What would you like to install? :")"
-pkg="$(ls ~/.local/pkgs/void-packages/srcpkgs | fzf --prompt="Search Void-src pkgs : " --border=rounded --margin=5% --color='fg:104,fg+:255,pointer:12,hl:255,hl+:12,header:12,prompt:255' --height 100% --reverse --header="                    Templates " --info=hidden --header-first)" 
+pkg="$(ls ~/.local/pkgs/void-packages/srcpkgs | dmenu -i -fn Hermit:size=10 -nb '#222222' -sb '#007687' -sf '#222222' -nf '#b8b8b8' -l 5 -g 5 -p "What would you like to install? :")"
+#pkg="$(ls ~/.local/pkgs/void-packages/srcpkgs | wofi --show dmenu --prompt="Which Package:")"
+#pkg="$(ls ~/.local/pkgs/void-packages/srcpkgs | fzf --prompt="Search Void-src pkgs : " --border=rounded --margin=5% \
+#    --color='fg:104,fg+:255,pointer:12,hl:255,hl+:12,header:12,prompt:255'\
+#    --height 100% --reverse --header="                    Templates " --info=hidden --header-first)" 
 DIR1=$HOME/.local/pkgs/void-packages/
 DIR2=$HOME/.local/pkgs/void-packages/srcpkgs
 CHECK="$(xbps-query -s "$pkg" | wc -l)"
@@ -33,4 +36,3 @@ else
     exit
 fi
 notify-send "$pkg installed"
-

@@ -31,7 +31,7 @@ $DIR/notify-send.sh "$volume""     " -i "$icon_name" --replace=555 -t 2000
             icon_name="/usr/share/icons/Faba/48x48/notifications/notification-audio-volume-low.svg"
         else
             if [ "$volume" -lt "70" ]; then
-                icon_name="/usr/share/icons/Faba/48x48/notifications/notification-audio-volume-medium.svg"
+                icon_name="/home/jake/.icons/Windows-10-1.0/48x48/status/stock_volume-med.png"
             else
                 icon_name="/usr/share/icons/Faba/48x48/notifications/notification-audio-volume-high.svg"
             fi
