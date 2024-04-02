@@ -12,7 +12,7 @@ fi
 
 git status;
 
-read -p "Would you like to push changes?: " -n 1 -r
+read -p "Would you like to push changes?: " -n 1 -r REPLY
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     if [[ "$file" != * ]]; then
         git add "$file"
