@@ -12,7 +12,7 @@ time="$(date "+%H:%M:%S")"
 #if [[ "$time" == "08:00:00" ]] && [[ -f "$FILE" ]]
 #then
 #    #echo "$BODY" | neomutt -s "$SUBJECT" "$TO_ADDRESS"
-#    curl -X POST https://textbelt.com/text --data-urlencode phone='2533752490' --data-urlencode message="$BODY" -d key=textbelt
+#    curl -X POST https://textbelt.com/text --data-urlencode phone='XXXXXXXXX' --data-urlencode message="$BODY" -d key=textbelt
 #    exit
 #elif [[ "$time" != "08:00:00" ]] && [[ "$time" < "0:8:00:02" ]] && [[ ! -f "$FILE" ]]
 #then
